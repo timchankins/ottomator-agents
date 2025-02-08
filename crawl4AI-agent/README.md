@@ -27,14 +27,21 @@ git clone https://github.com/coleam00/ottomator-agents.git
 cd ottomator-agents/crawl4AI-agent
 ```
 
-2. Install dependencies (recommended to use a Python virtual environment):
+2. Run the setup script:
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
+# Make the setup script executable
+chmod +x setup.sh
+# Run the setup script
+./setup.sh
+```
+This will create a virtual environment, install all dependencies, and provide further instructions.
+
+3. Activate the virtual environment (if not already activated):
+```bash
+source venv/bin/activate
 ```
 
-3. Set up environment variables:
+4. Set up environment variables:
    - Rename `.env.example` to `.env`
    - Edit `.env` with your API keys and preferences:
    ```env
