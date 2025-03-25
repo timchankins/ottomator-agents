@@ -232,6 +232,15 @@ def get_chi_conference_urls() -> List[str]:
         print(f"Error fetching sitemap: {e}")
         return []
 
+async def cleanup_existing_data():
+    """Delete existing rows from the database before crawling."""
+    try:
+        result = supabase.table("site_pages").delete().eq("metadata->>source", "sigchi_conference_events").execute()
+        deleted_count = len(result.data) if hasattr(result, 'data') else 0
+        print(f"Deleted {deleted_count} existing records before crawling")
+    except Exception as e:
+        print(f"Error during cleanup: {e}")
+
 async def main():
     # Get URLs
     urls = get_chi_conference_urls()
@@ -240,6 +249,8 @@ async def main():
         return
     
     print(f"Found {len(urls)} URLs to crawl")
+    # Clean up existing data before crawling
+    await cleanup_existing_data()
     await crawl_parallel(urls)
 
 if __name__ == "__main__":

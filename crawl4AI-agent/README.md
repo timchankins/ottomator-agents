@@ -85,7 +85,7 @@ This will:
 For an interactive web interface to query the documentation:
 
 ```bash
-streamlit run streamlit_ui.py
+streamlit run streamlit_ui.py subject=[chi, pydantic, test]
 ```
 
 The interface will be available at `http://localhost:8501`

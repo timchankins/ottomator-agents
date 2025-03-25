@@ -98,7 +98,7 @@ async def retrieve_relevant_documentation(ctx: RunContext[PydanticAIDeps], user_
             {
                 'query_embedding': query_embedding,
                 'match_count': 100,
-                'filter': {'source': 'sigchi__conference_events'}
+                'filter': {'source': 'sigchi_conference_events'}
             }
         ).execute()
         
@@ -134,7 +134,7 @@ async def list_conferences(ctx: RunContext[PydanticAIDeps]) -> List[str]:
         # Query Supabase for unique URLs where source is chi_conferences
         result = ctx.deps.supabase.from_('site_pages') \
             .select('url') \
-            .eq('metadata->>source', 'sigchi__conference_events') \
+            .eq('metadata->>source', 'sigchi_conference_events') \
             .execute()
         
         if not result.data:
@@ -165,7 +165,7 @@ async def get_page_content(ctx: RunContext[PydanticAIDeps], url: str) -> str:
         result = ctx.deps.supabase.from_('site_pages') \
             .select('title, content, chunk_number') \
             .eq('url', url) \
-            .eq('metadata->>source', 'sigchi__conference_events') \
+            .eq('metadata->>source', 'sigchi_conference_events') \
             .order('chunk_number') \
             .execute()
         
