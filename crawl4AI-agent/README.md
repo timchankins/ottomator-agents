@@ -51,6 +51,11 @@ source venv/bin/activate
    LLM_MODEL=gpt-4o-mini  # or your preferred OpenAI model
    ```
 
+5. Load your environment variables into the environment:
+```bash
+source .env
+```
+
 ## Usage
 
 ### Database Setup

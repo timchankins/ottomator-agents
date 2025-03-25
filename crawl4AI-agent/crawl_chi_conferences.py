@@ -122,7 +122,7 @@ async def process_chunk(chunk: str, chunk_number: int, url: str) -> ProcessedChu
     
     # Create metadata
     metadata = {
-        "source": "sigchi__conference_events", # https://sigchi.org/conferences/upcoming/
+        "source": "sigchi_conference_events", # https://sigchi.org/conferences/upcoming/
         "chunk_size": len(chunk),
         "crawled_at": datetime.now(timezone.utc).isoformat(),
         "url_path": urlparse(url).path
